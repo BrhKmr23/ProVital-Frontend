@@ -151,6 +151,9 @@ const MainSection = () => {
               </h1>
               <p>Optimize your lifestyle and reverse chronic diseases.</p>
             </div>
+            <div className="hero__search-bar">
+              <SearchBar />
+            </div>
           </div>
           <div className="hero__image-scroller-mobile">
             <div className="hero__image-track-mobile">
@@ -165,9 +168,6 @@ const MainSection = () => {
             </div>
           </div>
         </section>
-        <div className="hero__search-bar">
-          <SearchBar />
-        </div>
       </div>
 
       <div className="wave-divider" />
