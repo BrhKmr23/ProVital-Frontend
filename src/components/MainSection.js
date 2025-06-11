@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./MainSection.scss";
+import "./MobileStyles.scss";
 import SearchBar from "./SearchBar";
 
 // Image data for hero section
@@ -87,6 +88,25 @@ const MainSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const trackRef = useRef(null);
   const autoScrollRef = useRef();
+  const [cardWidth, setCardWidth] = useState(350);
+  const [cardGap, setCardGap] = useState(32);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 767) {
+        setCardWidth(window.innerWidth - 40); // card width is viewport width - padding
+        setCardGap(20);
+      } else {
+        setCardWidth(350);
+        setCardGap(32);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const handleTabClick = (index) => {
     setActiveIndex(index);
@@ -209,10 +229,10 @@ const MainSection = () => {
           <div
             className="pillars__cards-track"
             ref={trackRef}
-            style={{ transform: `translateX(-${activeIndex * (350 + 32)}px)` }}
+            style={{ transform: `translateX(-${activeIndex * (cardWidth + cardGap)}px)` }}
           >
             {pillarCardsData.map((card, index) => (
-              <div className="pillar-card" key={`card-track-${index}`}>
+              <div className="pillar-card" key={`card-track-${index}`} style={{ minWidth: cardWidth }}>
                 <div className="pillar-card__image-wrapper">
                   <img
                     src={card.imgSrc}

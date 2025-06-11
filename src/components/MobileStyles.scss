@@ -1,0 +1,116 @@
+@media (max-width: 767px) {
+  .hero-container {
+    padding: 20px;
+  }
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero__image-collage {
+    display: none; // Hide desktop image collage
+  }
+  .hero__text-content {
+    flex: 1;
+    order: 1;
+    margin-bottom: 30px;
+  }
+  .hero__content {
+    h1 {
+      font-size: 36px;
+    }
+    p {
+      font-size: 16px;
+    }
+  }
+
+  .hero__image-scroller-mobile {
+    display: block;
+    order: 2;
+    width: 100vw;
+    overflow: hidden;
+    .hero__image-track-mobile {
+      display: flex;
+      animation: scroll-horizontal 40s linear infinite;
+    }
+    .hero__image-mobile {
+      width: 250px;
+      height: auto;
+      margin-right: 20px;
+      border-radius: 12px;
+    }
+  }
+
+  .hero__search-bar {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    max-width: 100%;
+    margin-top: 20px;
+    order: 3;
+  }
+
+  .wave-divider {
+    clip-path: polygon(0 0, 100% 15%, 100% 100%, 0 100%);
+  }
+
+  .pillars {
+    padding-top: 80px;
+    clip-path: polygon(0 20px, 100% 0, 100% 100%, 0 100%);
+    &__header,
+    &__tabs {
+      padding: 0 20px;
+    }
+    &__header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
+    h2 {
+      font-size: 28px;
+    }
+    &__tabs {
+      display: flex;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+    &__cards-viewport {
+      padding: 0 20px;
+      overflow: hidden;
+      display: block;
+    }
+    &__cards-mobile {
+      display: none;
+    }
+    &__nav {
+      display: flex;
+    }
+  }
+
+  .pillar-card {
+    width: calc(100vw - 40px);
+    flex-shrink: 0;
+    overflow: visible;
+
+    &__image-wrapper {
+      display: block;
+      height: 220px;
+      width: 100%;
+      position: relative;
+    }
+    &__img {
+      display: block;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .pillars__cards-track {
+    display: flex;
+  }
+} 
