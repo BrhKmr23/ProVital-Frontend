@@ -1,20 +1,26 @@
 // --- Keyframe Animations ---
-
-// For Desktop: Vertical scroll on hero images
 @keyframes scroll-down {
+  from {
+    transform: translateY(0);
+  }
   to {
     transform: translateY(-50%);
   }
 }
 
 @keyframes scroll-up {
-  to {
+  from {
     transform: translateY(-50%);
+  }
+  to {
+    transform: translateY(0);
   }
 }
 
-// For Mobile: Horizontal scroll on hero images
 @keyframes scroll-horizontal {
+  from {
+    transform: translateX(0);
+  }
   to {
     transform: translateX(-50%);
   }
@@ -40,7 +46,6 @@ $white: #ffffff;
   background-color: $white;
   padding: 60px 80px;
 }
-
 .hero {
   display: flex;
   align-items: center;
@@ -58,22 +63,17 @@ $white: #ffffff;
   overflow: hidden;
   position: relative;
 }
-
 .hero__images-col {
   display: flex;
   flex-direction: column;
   gap: 20px;
-
   &.scroll-down {
-    animation: scroll-down 30s linear infinite;
+    animation: scroll-down 25s linear infinite;
   }
   &.scroll-up {
-    // Start from the bottom to scroll up
-    transform: translateY(-50%);
-    animation: scroll-up 30s linear infinite;
+    animation: scroll-up 25s linear infinite;
   }
 }
-
 .hero__image {
   width: 200px;
   border-radius: 16px;
@@ -81,23 +81,28 @@ $white: #ffffff;
 }
 
 // --- Hero Content ---
-.hero__content {
-  flex: 0 0 50%;
-  max-width: 520px;
+.hero__text-content {
+  flex: 1 1 50%;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
+.hero__content {
+  width: 100%;
+  max-width: 520px;
   h1 {
     font-size: 48px;
     font-weight: 700;
     line-height: 1.25;
     color: $primary-text;
     margin-bottom: 24px;
-
     .highlight {
       color: $highlight-blue;
     }
   }
-
   p {
     font-size: 18px;
     color: $secondary-text;
@@ -109,6 +114,14 @@ $white: #ffffff;
 // --- Hero Images (Mobile) - Hidden on Desktop ---
 .hero__image-scroller-mobile {
   display: none;
+}
+
+.hero__search-bar {
+  margin-top: 40px;
+  width: 80%;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 // --- Wave Divider ---
@@ -124,28 +137,23 @@ $white: #ffffff;
   padding-bottom: 60px;
   background-color: $light-grey;
   clip-path: polygon(0 30px, 100% 0, 100% 100%, 0 100%);
-
   &__header,
-  &__tabs,
-  &__cards {
+  &__tabs {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 80px;
   }
-
   &__header {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     margin-bottom: 40px;
   }
-
   &__subheading {
     font-size: 14px;
     font-weight: 600;
     color: $secondary-text;
   }
-
   h2 {
     font-size: 36px;
     font-weight: 700;
@@ -155,12 +163,10 @@ $white: #ffffff;
       color: $highlight-orange;
     }
   }
-
   &__nav {
     display: flex;
     gap: 16px;
   }
-
   &__arrow {
     background: $white;
     border: 1px solid $border-color;
@@ -169,14 +175,15 @@ $white: #ffffff;
     height: 44px;
     cursor: pointer;
     font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-
   &__tabs {
     display: flex;
     gap: 12px;
     margin-bottom: 40px;
   }
-
   &__tab-btn {
     background: $white;
     border: 1px solid $border-color;
@@ -186,17 +193,29 @@ $white: #ffffff;
     font-weight: 500;
     color: $secondary-text;
     cursor: pointer;
-
     &.active {
       background: $primary-text;
       color: $white;
     }
   }
 
-  &__cards {
+  // --- Pillar Cards (Desktop Auto-Scroller) ---
+  &__cards-viewport {
+    width: 100%;
+    overflow: hidden;
+    max-width: 1200px;
+    margin: 0 auto;
+    &:hover .pillars__cards-track {
+      animation-play-state: paused;
+    }
+  }
+  &__cards-track {
     display: flex;
     gap: 32px;
-    justify-content: center;
+    transition: transform 0.5s ease-in-out;
+  }
+  &__cards-mobile {
+    display: none;
   }
 }
 
@@ -208,7 +227,6 @@ $white: #ffffff;
   overflow: hidden;
   width: 350px;
   flex-shrink: 0;
-
   &__img {
     width: 100%;
     height: 220px;
@@ -217,7 +235,6 @@ $white: #ffffff;
   &__image-wrapper {
     position: relative;
   }
-
   &__badge {
     position: absolute;
     bottom: 20px;
@@ -234,7 +251,6 @@ $white: #ffffff;
       color: $secondary-text;
     }
   }
-
   &__content {
     padding: 24px;
     h3 {
@@ -249,91 +265,86 @@ $white: #ffffff;
   }
 }
 
-// --- Responsive Breakpoint (Mobile View) ---
+// --- Responsive Media Queries ---
 @media (max-width: 1024px) {
-  .hero-container {
-    padding: 40px 20px;
-  }
   .hero {
     flex-direction: column;
-    gap: 40px;
-  }
-
-  // --- Hide desktop hero images, show mobile scroller ---
-  .hero__image-collage {
-    display: none;
-  }
-
-  .hero__image-scroller-mobile {
-    display: block;
-    width: 100vw;
-    overflow: hidden;
-  }
-
-  .hero__image-track-mobile {
-    display: flex;
-    gap: 16px;
-    animation: scroll-horizontal 30s linear infinite;
-  }
-
-  .hero__image-mobile {
-    width: 180px;
-    height: 240px;
-    object-fit: cover;
-    border-radius: 12px;
-  }
-
-  .hero__content {
     text-align: center;
+  }
+  .hero__image-collage {
+    display: none; // Hide desktop image columns
+  }
+  .hero__text-content {
+    flex: 1;
+    max-width: 100%;
     h1 {
       font-size: 36px;
     }
   }
-
-  // --- Pillar Section Mobile ---
+  .hero__image-scroller-mobile {
+    display: block;
+    width: 100vw;
+    margin: 32px -20px 0;
+    overflow: hidden;
+  }
+  .hero__image-track-mobile {
+    display: flex;
+    width: calc(250px * 16); // (Image width) * (8 images * 2 for loop)
+    animation: scroll-horizontal 30s linear infinite;
+  }
+  .hero__image-mobile {
+    width: 250px;
+    margin: 0 10px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
   .pillars {
-    &__header,
-    &__tabs {
-      padding: 0 20px;
-    }
-
-    &__header {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 16px;
-    }
-
-    &__nav {
-      align-self: flex-end;
-    }
-
-    // Make tabs scrollable
-    &__tabs {
-      overflow-x: auto;
-      padding-bottom: 10px;
-      -ms-overflow-style: none; /* IE and Edge */
-      scrollbar-width: none; /* Firefox */
-      &::-webkit-scrollbar {
-        display: none;
-      } /* Chrome, Safari, Opera */
-    }
-
-    // Make cards swipeable
-    &__cards {
-      padding: 0 20px;
-      justify-content: flex-start;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-      &::-webkit-scrollbar {
-        display: none;
-      }
+    padding: 80px 20px 40px;
+    clip-path: polygon(0 20px, 100% 0, 100% 100%, 0 100%);
+  }
+  .pillars__header,
+  .pillars__tabs {
+    padding: 0;
+  }
+  .pillars__header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+  }
+  .pillars__tabs {
+    overflow-x: auto;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    &::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, and Opera */
     }
   }
+  .pillars__cards-viewport,
+  .pillars__cards-track {
+    display: none; // Hide desktop card scroller
+  }
+  .pillars__cards-mobile {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 20px 0;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    .pillar-card {
+      width: 300px;
+    }
+  }
+}
 
-  .pillar-card {
-    scroll-snap-align: start;
-    width: 85%;
+@media (max-width: 767px) {
+  .hero-container {
+    padding: 40px 20px;
+  }
+  .hero__text-content h1 {
+    font-size: 32px;
   }
 }
