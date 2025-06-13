@@ -20,18 +20,26 @@ I’m actively developing and tweaking the layout, so you’ll notice some custo
 ## Folder Structure
 
 
-public/
-  images/           # All static images used in the hero and cards
-src/
-  components/       # React components (Header, SearchBar, MainSection, etc.)
-    Header.js
-    Header.scss
-    SearchBar.js
-    SearchBar.scss
-    MainSection.js
-    MainSection.scss
-  App.js
-  index.js
+Proactively-Frontend/
+├── public/
+│   └── images/              # All static images used in the hero and cards
+│
+├── src/
+│   ├── components/
+│   │   ├── Header.js
+│   │   ├── Header.scss
+│   │   ├── SearchBar.js
+│   │   ├── SearchBar.scss
+│   │   ├── MainSection.js
+│   │   └── MainSection.scss
+│   │
+│   ├── App.js
+│   └── index.js
+│
+├── package.json
+├── .gitignore
+└── README.md
+
 
 
 ## How to Run
