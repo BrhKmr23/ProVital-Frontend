@@ -14,9 +14,6 @@ I’m actively developing and tweaking the layout, so you’ll notice some custo
 - “Six Pillars” section with cards for Nutrition, Physical Activity, Sleep, etc.
 - Header with dropdown login/signup for Doctors and Patients
 
-
-![image](https://github.com/user-attachments/assets/322f4269-9b1f-4e7f-b7b3-e37bbc15fe5d)
-
 ## Folder Structure
 
 
@@ -32,7 +29,6 @@ src/
     MainSection.scss
   App.js
   index.js
-
 
 
 ## How to Run
