@@ -14,6 +14,7 @@ I’m actively developing and tweaking the layout, so you’ll notice some custo
 - “Six Pillars” section with cards for Nutrition, Physical Activity, Sleep, etc.
 - Header with dropdown login/signup for Doctors and Patients
 
+/Final Page.png
 ## Folder Structure
 
 
