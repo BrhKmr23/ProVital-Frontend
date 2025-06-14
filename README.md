@@ -13,8 +13,9 @@ I’m actively developing and tweaking the layout, so you’ll notice some custo
 - Search bar with specialty, location, and insurance fields
 - “Six Pillars” section with cards for Nutrition, Physical Activity, Sleep, etc.
 - Header with dropdown login/signup for Doctors and Patients
+- 
+![Fianl Page](https://github.com/user-attachments/assets/04ea1c85-dedb-4a34-87a2-594239b795c5)
 
-/Final Page.png
 ## Folder Structure
 
 
